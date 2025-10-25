@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
-import os
+from io import BytesIO
 from processor import load_images
 from animator import create_gif
 
@@ -9,12 +9,16 @@ from animator import create_gif
 class GifApp:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("GIF Creator")
-        self.root.geometry("800x600")
+        self.root.title("GIF Creator 🎞️")
+        self.root.geometry("850x650")
         self.root.config(bg="#f0f0f0")
 
         self.image_paths = []
         self.preview_labels = []
+        self.gif_label = None
+        self.gif_frames = []
+        self.gif_index = 0
+        self.playing = False
 
         self.create_widgets()
 
@@ -25,14 +29,15 @@ class GifApp:
         btn_frame = tk.Frame(self.root, bg="#f0f0f0")
         btn_frame.pack(pady=10)
 
-        upload_btn = tk.Button(btn_frame, text="📁 Chọn ảnh", command=self.upload_images, width=15, bg="#2196F3", fg="white")
-        upload_btn.grid(row=0, column=0, padx=10)
-
-        create_btn = tk.Button(btn_frame, text="🎞️ Tạo GIF", command=self.create_gif, width=15, bg="#4CAF50", fg="white")
-        create_btn.grid(row=0, column=1, padx=10)
+        tk.Button(btn_frame, text="📁 Chọn ảnh", command=self.upload_images, width=15, bg="#2196F3", fg="white").grid(row=0, column=0, padx=10)
+        tk.Button(btn_frame, text="🎞️ Xem GIF", command=self.preview_gif, width=15, bg="#FF9800", fg="white").grid(row=0, column=1, padx=10)
+        tk.Button(btn_frame, text="💾 Lưu GIF", command=self.save_gif, width=15, bg="#4CAF50", fg="white").grid(row=0, column=2, padx=10)
 
         self.preview_frame = tk.Frame(self.root, bg="#f0f0f0")
         self.preview_frame.pack(pady=20)
+
+        self.gif_canvas = tk.Label(self.root, bg="#e0e0e0", width=400, height=300)
+        self.gif_canvas.pack(pady=20)
 
     def upload_images(self):
         file_paths = filedialog.askopenfilenames(
@@ -56,9 +61,42 @@ class GifApp:
             label.image = img_tk
             label.grid(row=0, column=idx, padx=5, pady=5)
 
-    def create_gif(self):
+    def preview_gif(self):
         if not self.image_paths:
-            messagebox.showwarning("Chưa chọn ảnh", "Vui lòng chọn ít nhất 2 ảnh để tạo ảnh động.")
+            messagebox.showwarning("Chưa chọn ảnh", "Vui lòng chọn ít nhất 2 ảnh.")
+            return
+
+        images = load_images(self.image_paths)
+        gif_buffer = create_gif(images, duration=200)
+        gif = Image.open(gif_buffer)
+
+        self.gif_frames = []
+        try:
+            while True:
+                frame = gif.copy()
+                frame = frame.resize((400, 300))
+                self.gif_frames.append(ImageTk.PhotoImage(frame))
+                gif.seek(len(self.gif_frames))
+        except EOFError:
+            pass
+
+        if self.gif_frames:
+            self.gif_index = 0
+            self.playing = True
+            self.play_gif()
+
+    def play_gif(self):
+        if not self.playing or not self.gif_frames:
+            return
+        frame = self.gif_frames[self.gif_index]
+        self.gif_canvas.config(image=frame)
+        self.gif_canvas.image = frame
+        self.gif_index = (self.gif_index + 1) % len(self.gif_frames)
+        self.root.after(150, self.play_gif)
+
+    def save_gif(self):
+        if not self.image_paths:
+            messagebox.showwarning("Chưa chọn ảnh", "Vui lòng chọn ảnh trước.")
             return
 
         save_path = filedialog.asksaveasfilename(
@@ -66,12 +104,13 @@ class GifApp:
             filetypes=[("GIF files", "*.gif")],
             title="Lưu ảnh GIF"
         )
-
         if not save_path:
             return
 
         images = load_images(self.image_paths)
-        create_gif(images, save_path)
+        gif_buffer = create_gif(images)
+        with open(save_path, "wb") as f:
+            f.write(gif_buffer.getvalue())
         messagebox.showinfo("Thành công", f"Ảnh động đã được lưu tại:\n{save_path}")
 
     def run(self):
