@@ -32,6 +32,14 @@ class GifApp:
         tk.Button(btn_frame, text="📁 Chọn ảnh", command=self.upload_images, width=15, bg="#2196F3", fg="white").grid(row=0, column=0, padx=10)
         tk.Button(btn_frame, text="🎞️ Xem GIF", command=self.preview_gif, width=15, bg="#FF9800", fg="white").grid(row=0, column=1, padx=10)
         tk.Button(btn_frame, text="💾 Lưu GIF", command=self.save_gif, width=15, bg="#4CAF50", fg="white").grid(row=0, column=2, padx=10)
+        self.ai_var = tk.BooleanVar()
+        tk.Checkbutton(
+            self.root,
+            text="🧠 Dùng AI mượt hóa ảnh động",
+            variable=self.ai_var,
+            bg="#f0f0f0",
+            font=("Arial", 11)
+        ).pack()
 
         self.preview_frame = tk.Frame(self.root, bg="#f0f0f0")
         self.preview_frame.pack(pady=20)
@@ -67,7 +75,8 @@ class GifApp:
             return
 
         images = load_images(self.image_paths)
-        gif_buffer = create_gif(images, duration=200)
+        gif_buffer = create_gif(images, duration=200, smooth=self.ai_var.get(), num_inter_frames=2)
+
         gif = Image.open(gif_buffer)
 
         self.gif_frames = []
@@ -108,7 +117,7 @@ class GifApp:
             return
 
         images = load_images(self.image_paths)
-        gif_buffer = create_gif(images)
+        gif_buffer = create_gif(images, smooth=self.ai_var.get(), num_inter_frames=2)
         with open(save_path, "wb") as f:
             f.write(gif_buffer.getvalue())
         messagebox.showinfo("Thành công", f"Ảnh động đã được lưu tại:\n{save_path}")
