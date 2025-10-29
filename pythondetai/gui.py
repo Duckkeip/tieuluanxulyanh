@@ -80,22 +80,14 @@ class GifApp:
         self.preview_canvas.create_window((0,0), window=self.thumb_frame, anchor="nw")
         self.thumb_frame.bind("<Configure>", lambda e: self.preview_canvas.configure(scrollregion=self.preview_canvas.bbox("all")))
 
-        # GIF + Video canvases side by side
+        # GIF + Logo luôn hiển thị
         preview_area = tk.Frame(tab1, bg="#f7f7f7")
         preview_area.pack(pady=10, fill="both", expand=True)
-        self.gif_canvas = tk.Label(preview_area, bg="#e0e0e0", width=560, height=420)
-        self.gif_canvas.grid(row=0, column=0, padx=12, pady=8)
-        self.video_canvas = tk.Label(preview_area, bg="#222", width=560, height=420)
-        self.video_canvas.grid(row=0, column=1, padx=12, pady=8)
-        tk.Label(self.video_canvas, text="(Chưa có video)", bg="#222", fg="#fff").pack(expand=True)
 
-        # Video control bar (for tab1)
-        video_controls = tk.Frame(tab1, bg="#333")
-        video_controls.pack(fill="x", pady=(0,10))
-        tk.Button(video_controls, text="▶️ Play", command=self.play_video).pack(side="left", padx=5)
-        tk.Button(video_controls, text="⏸ Pause", command=self.pause_video).pack(side="left", padx=5)
-        tk.Button(video_controls, text="⏩ Tua +5s", command=self.skip_video).pack(side="left", padx=5)
-        tk.Button(video_controls, text="🔍 Phóng to", command=self.toggle_fullscreen).pack(side="right", padx=5)
+        # Khung xem GIF bên trái
+        self.gif_canvas = tk.Label(preview_area, bg="#e0e0e0", width=560, height=420)
+        self.gif_canvas.grid(row=0, column=0, padx=12, pady=8, sticky="nsew")
+
 
         # ------------------------
         # Tab 2: Import Video -> Extract Frames
@@ -211,15 +203,116 @@ class GifApp:
         if not self.image_paths:
             messagebox.showwarning("Chưa chọn ảnh", "Vui lòng chọn ảnh trước.")
             return
+
         images = load_images(self.image_paths)
         self.video_path = "temp_video.mp4"
+
         try:
-            create_video(images, fps=self.fps_var.get(), effect=self.effect_var.get(), inter_frames=self.inter_var.get(), output_path=self.video_path)
+            create_video(images, fps=self.fps_var.get(),
+                         effect=self.effect_var.get(),
+                         inter_frames=self.inter_var.get(),
+                         output_path=self.video_path)
         except Exception as e:
             messagebox.showerror("Lỗi tạo video", str(e))
             return
-        # start playing
-        self.play_video()
+
+        # Mở cửa sổ preview video riêng
+        self.open_video_window(self.video_path)
+
+    def open_video_window(self, video_path):
+        if not os.path.exists(video_path):
+            messagebox.showerror("Lỗi", "Không tìm thấy file video.")
+            return
+
+        win = tk.Toplevel(self.root)
+        win.title("Xem trước Video")
+        win.geometry("800x600")
+        win.config(bg="#222")
+
+        video_label = tk.Label(win, bg="#000")
+        video_label.pack(padx=10, pady=10, fill="both", expand=True)
+
+        controls = tk.Frame(win, bg="#333")
+        controls.pack(fill="x", pady=10)
+
+        # Biến điều khiển video
+        cap = cv2.VideoCapture(video_path)
+        paused = False
+        running = True
+        speed_factor = 1.0  # tốc độ mặc định (1x)
+
+        # Nhãn hiển thị tốc độ
+        speed_label = tk.Label(controls, text="Tốc độ: 1.0x", bg="#333", fg="white", width=12)
+        speed_label.pack(side="right", padx=10)
+
+        def update_speed_label():
+            speed_label.config(text=f"Tốc độ: {speed_factor:.1f}x")
+
+        def play_video():
+            nonlocal paused
+            paused = False
+
+        def pause_video():
+            nonlocal paused
+            paused = True
+
+        def skip_video():
+            nonlocal cap
+            pos = cap.get(cv2.CAP_PROP_POS_MSEC)
+            cap.set(cv2.CAP_PROP_POS_MSEC, pos + 5000)
+
+        def toggle_fullscreen():
+            win.attributes("-fullscreen", not win.attributes("-fullscreen"))
+
+        def increase_speed():
+            nonlocal speed_factor
+            if speed_factor < 4.0:
+                speed_factor *= 2
+                update_speed_label()
+
+        def decrease_speed():
+            nonlocal speed_factor
+            if speed_factor > 0.25:
+                speed_factor /= 2
+                update_speed_label()
+
+        # Các nút điều khiển
+        tk.Button(controls, text="▶️ Phát", width=10, command=play_video).pack(side="left", padx=5)
+        tk.Button(controls, text="⏸ Tạm dừng", width=10, command=pause_video).pack(side="left", padx=5)
+        tk.Button(controls, text="⏩ Tua +5s", width=10, command=skip_video).pack(side="left", padx=5)
+        tk.Button(controls, text="⏪ 0.5x", width=8, command=decrease_speed).pack(side="left", padx=5)
+        tk.Button(controls, text="⏩ 2x", width=8, command=increase_speed).pack(side="left", padx=5)
+        tk.Button(controls, text="🔍 Phóng to", width=10, command=toggle_fullscreen).pack(side="right", padx=5)
+
+        def update_frame():
+            nonlocal running
+            if not running:
+                return
+            if not paused:
+                ret, frame = cap.read()
+                if not ret:
+                    cap.set(cv2.CAP_PROP_POS_FRAMES, 0)  # lặp lại
+                    ret, frame = cap.read()
+                if ret:
+                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    img = Image.fromarray(frame)
+                    img.thumbnail((760, 540))
+                    imgtk = ImageTk.PhotoImage(img)
+                    video_label.config(image=imgtk)
+                    video_label.image = imgtk
+
+            # Thay đổi tốc độ bằng cách điều chỉnh khoảng delay giữa các frame
+            delay = int(30 / speed_factor)  # 30ms là khoảng ~33fps
+            win.after(max(1, delay), update_frame)
+
+        def on_close():
+            nonlocal running
+            running = False
+            cap.release()
+            win.destroy()
+
+        win.protocol("WM_DELETE_WINDOW", on_close)
+        update_frame()
 
     # ----------------- Video preview (Tab1) -----------------
     def play_video(self):
@@ -260,6 +353,9 @@ class GifApp:
         self.video_running = False
 
     def _update_video_canvas(self, imgtk):
+        for w in self.video_canvas.winfo_children():
+            w.destroy()
+            # Hiển thị khung hình video
         self.video_canvas.config(image=imgtk)
         self.video_canvas.image = imgtk
 

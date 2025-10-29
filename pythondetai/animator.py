@@ -3,25 +3,10 @@ from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import os
 import math
-import imageio.v2 as imageio
+from imageio import v2 as imageio
 import cv2
+import numpy as np
 
-def _draw_watermark(img: Image.Image, text: str, opacity: int = 180, margin=10):
-    # kept for backward compatibility but GUI removed watermark; function remains unused
-    if not text:
-        return img
-    img = img.convert("RGBA")
-    txt = Image.new("RGBA", img.size, (255,255,255,0))
-    draw = ImageDraw.Draw(txt)
-    try:
-        font = ImageFont.truetype("arial.ttf", 18)
-    except Exception:
-        font = ImageFont.load_default()
-    w, h = draw.textsize(text, font=font)
-    x = img.width - w - margin
-    y = img.height - h - margin
-    draw.text((x, y), text, fill=(255,255,255,opacity), font=font)
-    return Image.alpha_composite(img, txt).convert("RGB")
 
 def _make_fade_frames(img1, img2, n):
     frames = []
@@ -53,6 +38,7 @@ def create_gif(images, fps=10, effect='none', inter_frames=0, watermark_text=Non
     if duration_ms is None:
         duration_ms = max(20, int(1000 / max(1, fps)))
     base_size = images[0].size
+
     norm_images = []
     for im in images:
         if im.size != base_size:
@@ -63,8 +49,7 @@ def create_gif(images, fps=10, effect='none', inter_frames=0, watermark_text=Non
     for i in range(len(norm_images) - 1):
         a = norm_images[i].convert("RGB")
         b = norm_images[i + 1].convert("RGB")
-        if watermark_text:
-            a = _draw_watermark(a, watermark_text)
+
         final_frames.append(a)
         if inter_frames > 0:
             if effect.lower() == 'fade':
@@ -75,8 +60,7 @@ def create_gif(images, fps=10, effect='none', inter_frames=0, watermark_text=Non
                 mids = [a.copy() for _ in range(inter_frames)]
             final_frames.extend(mids)
     last = norm_images[-1].convert("RGB")
-    if watermark_text:
-        last = _draw_watermark(last, watermark_text)
+
     final_frames.append(last)
     buffer = BytesIO()
     final_frames[0].save(
@@ -98,6 +82,13 @@ def create_video(images, fps=30, effect='none', inter_frames=0, watermark_text=N
     if len(images) < 1:
         raise ValueError("Cần ít nhất 1 ảnh để tạo video.")
     base_size = images[0].size
+
+    # Đảm bảo kích thước chia hết cho 16 để tránh cảnh báo FFmpeg
+    w, h = base_size
+    w = (w + 15) // 16 * 16
+    h = (h + 15) // 16 * 16
+    base_size = (w, h)
+
     norm_images = []
     for im in images:
         if im.size != base_size:
@@ -108,8 +99,7 @@ def create_video(images, fps=30, effect='none', inter_frames=0, watermark_text=N
     for i in range(len(norm_images) - 1):
         a = norm_images[i].convert("RGB")
         b = norm_images[i + 1].convert("RGB")
-        if watermark_text:
-            a = _draw_watermark(a, watermark_text)
+
         final_frames.append(a)
         if inter_frames > 0:
             if effect == 'fade':
@@ -120,14 +110,13 @@ def create_video(images, fps=30, effect='none', inter_frames=0, watermark_text=N
                 mids = []
             final_frames.extend(mids)
     last = norm_images[-1].convert("RGB")
-    if watermark_text:
-        last = _draw_watermark(last, watermark_text)
+
     final_frames.append(last)
     # write with imageio
     writer = imageio.get_writer(output_path, fps=fps)
     for frame in final_frames:
         # convert PIL Image to numpy array
-        writer.append_data(imageio.asarray(frame))
+        writer.append_data(np.asarray(frame))
     writer.close()
     return output_path
 
