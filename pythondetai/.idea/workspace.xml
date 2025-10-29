@@ -7,107 +7,7 @@
     <list default="true" id="c08936e5-7c23-441a-b96d-30c10dc29dcd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../baocaoN4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../baocaoN4.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animator.py" beforeDir="false" afterPath="$PROJECT_DIR$/animator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save/h.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/save/v.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0000.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0002.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0003.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0004.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0025.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0028.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0029.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0032.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0033.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0034.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0039.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0040.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0041.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0042.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0044.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0045.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0046.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0047.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0051.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0052.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0054.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0055.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0056.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0057.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0058.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0059.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0060.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0061.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0062.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0063.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0064.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0065.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0068.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0069.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0070.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0071.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0074.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0075.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0076.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0077.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0079.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0080.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0082.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0087.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0088.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0091.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0092.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0094.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveimagefromvid/frame_0095.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp_video.mp4" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +93,7 @@
       <workItem from="1761542807278" duration="1483000" />
       <workItem from="1761544350602" duration="335000" />
       <workItem from="1761629408151" duration="5687000" />
-      <workItem from="1761711690308" duration="4972000" />
+      <workItem from="1761711690308" duration="6513000" />
     </task>
     <servers />
   </component>
@@ -212,6 +112,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pythondetai$main.coverage" NAME="main Coverage Results" MODIFIED="1761716645155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pythondetai$main.coverage" NAME="main Coverage Results" MODIFIED="1761717665593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
