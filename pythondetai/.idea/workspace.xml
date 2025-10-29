@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c08936e5-7c23-441a-b96d-30c10dc29dcd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../baocaoN4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../baocaoN4.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pythondetai.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythondetai.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp_video.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +95,7 @@
       <workItem from="1761544350602" duration="335000" />
       <workItem from="1761629408151" duration="5687000" />
       <workItem from="1761711690308" duration="6513000" />
+      <workItem from="1761749631189" duration="1359000" />
     </task>
     <servers />
   </component>
@@ -112,6 +114,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pythondetai$main.coverage" NAME="main Coverage Results" MODIFIED="1761717665593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pythondetai$main.coverage" NAME="main Coverage Results" MODIFIED="1761750806360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

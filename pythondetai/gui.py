@@ -9,7 +9,7 @@ import threading
 import time
 import os
 
-MAX_EXTRACT_SECONDS = 15.0
+MAX_EXTRACT_SECONDS = 600.0
 
 class GifApp:
     def __init__(self):
@@ -100,7 +100,7 @@ class GifApp:
         tk.Button(vctrl, text="📁 Chọn Video", command=self.select_import_video, width=16).grid(row=0, column=0, padx=6)
         tk.Label(vctrl, text="Target FPS:", bg="#f7f7f7").grid(row=0, column=1, sticky="w")
         self.target_fps_var = tk.IntVar(value=24)
-        ttk.Combobox(vctrl, textvariable=self.target_fps_var, values=(12,24,60), width=6, state="readonly").grid(row=0, column=2, padx=6)
+        ttk.Combobox(vctrl, textvariable=self.target_fps_var, values=(1,2,10,12,24,60), width=6, state="readonly").grid(row=0, column=2, padx=6)
         tk.Label(vctrl, text="Thời lượng (giây, ≤15):", bg="#f7f7f7").grid(row=0, column=3, sticky="w")
         self.extract_duration_var = tk.IntVar(value=5)
         tk.Spinbox(vctrl, from_=1, to=int(MAX_EXTRACT_SECONDS), textvariable=self.extract_duration_var, width=6).grid(row=0, column=4, padx=6)
